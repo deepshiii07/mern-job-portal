@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./SeekerProfile.css";
+import API_BASE_URL from "../config";
 
 function SeekerProfile() {
   const token = localStorage.getItem("token");
@@ -14,9 +15,12 @@ function SeekerProfile() {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+  `${API_BASE_URL}/api/profile`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
       setProfile(res.data);
     } catch (err) {
       console.log(err);
@@ -30,10 +34,10 @@ function SeekerProfile() {
   const handleSave = async () => {
     try {
       await axios.put(
-        "http://localhost:5000/api/profile",
-        profile,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/profile`,
+  profile,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       setEditMode(false);
       alert("Profile updated successfully");
     } catch (err) {

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./JobSeekerDashboard.css";
+import API_BASE_URL from "../config";
 
 function JobSeekerDashboard() {
   const token = localStorage.getItem("token");
@@ -22,7 +23,7 @@ function JobSeekerDashboard() {
 
   const fetchJobs = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/jobs");
+      const res = await axios.get("https://careerconnect-x6fm.onrender.com//api/jobs");
       setJobs(res.data);
       if (res.data.length > 0) setSelectedJob(res.data[0]);
     } catch (err) {
@@ -33,7 +34,7 @@ function JobSeekerDashboard() {
   const fetchMyApplications = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/applications/my-applications",
+        "https://careerconnect-x6fm.onrender.com//api/applications/my-applications",
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -50,7 +51,7 @@ function JobSeekerDashboard() {
   const submitApplication = async () => {
     try {
       await axios.post(
-        `http://localhost:5000/api/applications/${selectedJob._id}`,
+        `https://careerconnect-x6fm.onrender.com//api/applications/${selectedJob._id}`,
         { coverLetter },
         {
           headers: {

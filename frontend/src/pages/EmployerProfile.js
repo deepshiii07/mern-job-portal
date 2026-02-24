@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./EmployerProfile.css";
+import API_BASE_URL from "../config";
 
 function EmployerProfile() {
   const [profile, setProfile] = useState(null);
@@ -18,7 +19,7 @@ function EmployerProfile() {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/profile", {
+      const res = await axios.get("https://careerconnect-x6fm.onrender.com//api/profile", {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProfile(res.data);
@@ -34,7 +35,7 @@ function EmployerProfile() {
   const handleSave = async () => {
     try {
       await axios.put(
-        "http://localhost:5000/api/profile",
+        "https://careerconnect-x6fm.onrender.com//api/profile",
         profile,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -50,7 +51,7 @@ function EmployerProfile() {
   const handlePasswordUpdate = async () => {
     try {
       await axios.put(
-        "http://localhost:5000/api/profile/password",
+        "https://careerconnect-x6fm.onrender.com//api/profile/password",
         passwords,
         {
           headers: { Authorization: `Bearer ${token}` },

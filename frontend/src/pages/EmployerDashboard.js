@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./EmployerDashboard.css";
+import API_BASE_URL from "../config";
 
 function EmployerDashboard() {
   const navigate = useNavigate();
@@ -26,10 +27,10 @@ function EmployerDashboard() {
   /* ================= FETCH JOBS ================= */
   const fetchJobs = useCallback(async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:5000/api/jobs/my-jobs",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     const res = await axios.get(
+  `${API_BASE_URL}/api/jobs/my-jobs`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       setJobs(res.data);
     } catch (err) {
       console.error(err);
@@ -40,9 +41,9 @@ function EmployerDashboard() {
   const fetchApplications = useCallback(async () => {
     try {
       const res = await axios.get(
-        "http://localhost:5000/api/applications/employer",
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/applications/employer`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       setApplications(res.data);
     } catch (err) {
       console.error(err);
@@ -58,9 +59,9 @@ function EmployerDashboard() {
   const viewApplication = async (application) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/profile/${application.applicant._id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/profile/${application.applicant._id}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
 
       setSelectedApplication(application);
       setSelectedProfile(res.data);
@@ -73,10 +74,10 @@ function EmployerDashboard() {
   const updateJobStatus = async (jobId, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/jobs/${jobId}/status`,
-        { jobStatus: newStatus },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/jobs/${jobId}/status`,
+  { jobStatus: newStatus },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       fetchJobs();
     } catch (err) {
       console.error(err);
@@ -87,10 +88,10 @@ function EmployerDashboard() {
   const updateApplicationStatus = async (appId, newStatus) => {
     try {
       await axios.put(
-        `http://localhost:5000/api/applications/${appId}/status`,
-        { status: newStatus },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/applications/${appId}/status`,
+  { status: newStatus },
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       fetchApplications();
     } catch (err) {
       console.error(err);
@@ -101,11 +102,11 @@ function EmployerDashboard() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:5000/api/jobs",
-        formData,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+     await axios.post(
+  `${API_BASE_URL}/api/jobs`,
+  formData,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
 
       setFormData({
         title: "",
@@ -126,9 +127,9 @@ function EmployerDashboard() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/jobs/${id}`,
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+  `${API_BASE_URL}/api/jobs/${id}`,
+  { headers: { Authorization: `Bearer ${token}` } }
+);
       fetchJobs();
     } catch (err) {
       console.error(err);
