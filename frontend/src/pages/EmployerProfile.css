@@ -1,0 +1,121 @@
+.employer-profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-card {
+  background: white;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.profile-card h2 {
+  margin-bottom: 25px;
+  color: #1e3a8a;
+}
+
+.profile-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 18px;
+}
+
+.profile-group label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.profile-group input,
+.profile-group textarea {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.profile-group textarea {
+  min-height: 90px;
+  resize: none;
+}
+
+.profile-group input:focus,
+.profile-group textarea:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+.primary-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #1e40af;
+}
+
+.danger-btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #dc2626;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.danger-btn:hover {
+  background: #b91c1c;
+}
+
+.profile-loading {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 18px;
+}
+.application-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.application-modal {
+  background: white;
+  width: 70%;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 30px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: none;
+  background: none;
+  font-size: 22px;
+  cursor: pointer;
+}

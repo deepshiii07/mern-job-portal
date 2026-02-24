@@ -1,0 +1,233 @@
+/* ============================= */
+/* DASHBOARD BACKGROUND */
+/* ============================= */
+
+.seeker-dashboard {
+  padding: 40px 60px;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+/* ============================= */
+/* SEARCH BAR */
+/* ============================= */
+
+.search-bar {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 40px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.06);
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+.search-bar input:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.search-bar button {
+  padding: 14px 28px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-bar button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+}
+
+/* ============================= */
+/* MAIN BODY */
+/* ============================= */
+
+.dashboard-body {
+  display: flex;
+  gap: 35px;
+}
+
+/* ============================= */
+/* LEFT JOB LIST */
+/* ============================= */
+
+.job-list {
+  width: 40%;
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  max-height: 75vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+}
+
+.job-list h4 {
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+/* ============================= */
+/* JOB CARDS */
+/* ============================= */
+
+.job-card {
+  padding: 18px;
+  border-radius: 16px;
+  border: 1px solid #eef2f7;
+  margin-bottom: 18px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  background: #ffffff;
+}
+
+.job-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.active-job {
+  border: 2px solid #2563eb;
+  background: #f1f5ff;
+  box-shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+}
+
+.job-card h5 {
+  margin-bottom: 6px;
+  font-weight: 600;
+  font-size: 17px;
+}
+
+.company {
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.location {
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.salary {
+  color: #15803d;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* ============================= */
+/* RIGHT JOB DETAILS */
+/* ============================= */
+
+.job-details {
+  flex: 1;
+  background: white;
+  border-radius: 22px;
+  padding: 35px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.06);
+  max-height: 75vh;
+  overflow-y: auto;
+}
+
+.job-details h3 {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.job-details hr {
+  margin: 25px 0;
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ============================= */
+/* APPLY BUTTON */
+/* ============================= */
+
+.apply-btn {
+  margin-top: 18px;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(37, 99, 235, 0.3);
+}
+
+.apply-btn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* ============================= */
+/* APPLICATION STATUS TEXT */
+/* ============================= */
+
+.job-details p strong {
+  font-weight: 600;
+}
+
+/* ============================= */
+/* SCROLLBAR */
+/* ============================= */
+
+.job-list::-webkit-scrollbar,
+.job-details::-webkit-scrollbar {
+  width: 8px;
+}
+
+.job-list::-webkit-scrollbar-thumb,
+.job-details::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 10px;
+}
+
+.job-list::-webkit-scrollbar-thumb:hover,
+.job-details::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 900px) {
+  .dashboard-body {
+    flex-direction: column;
+  }
+
+  .job-list {
+    width: 100%;
+    max-height: none;
+  }
+
+  .job-details {
+    max-height: none;
+  }
+}
