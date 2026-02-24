@@ -19,9 +19,12 @@ function EmployerProfile() {
 
   const fetchProfile = async () => {
     try {
-      const res = await axios.get("https://careerconnect-x6fm.onrender.com//api/profile", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const res = await axios.get(
+  `${API_BASE_URL}/api/profile`,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
       setProfile(res.data);
     } catch (err) {
       console.log(err);
@@ -35,12 +38,12 @@ function EmployerProfile() {
   const handleSave = async () => {
     try {
       await axios.put(
-        "https://careerconnect-x6fm.onrender.com//api/profile",
-        profile,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  `${API_BASE_URL}/api/profile`,
+  profile,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
       setEditMode(false);
       alert("Profile updated successfully");
     } catch (err) {
@@ -51,12 +54,12 @@ function EmployerProfile() {
   const handlePasswordUpdate = async () => {
     try {
       await axios.put(
-        "https://careerconnect-x6fm.onrender.com//api/profile/password",
-        passwords,
-        {
-          headers: { Authorization: `Bearer ${token}` },
-        }
-      );
+  `${API_BASE_URL}/api/profile/password`,
+  passwords,
+  {
+    headers: { Authorization: `Bearer ${token}` },
+  }
+);
       alert("Password updated successfully");
       setPasswords({ currentPassword: "", newPassword: "" });
     } catch (err) {
