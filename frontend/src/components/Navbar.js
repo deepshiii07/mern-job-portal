@@ -1,75 +1,50 @@
-import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 function Navbar() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
   const token = localStorage.getItem("token");
   const role = localStorage.getItem("role");
+  const isHome = location.pathname === "/";
 
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("role");
+    setMenuOpen(false);
     navigate("/");
   };
 
   const handleProfile = () => {
-    if (role === "employer") {
-      navigate("/employer-profile");
-    } else if (role === "jobseeker") {
-      navigate("/seeker-profile");
-    }
+    setMenuOpen(false);
+    navigate(role === "employer" ? "/employer-profile" : "/seeker-profile");
   };
 
   const handleHome = () => {
-    if (role === "employer") {
-      navigate("/employer");
-    } else if (role === "jobseeker") {
-      navigate("/jobseeker");
-    }
+    setMenuOpen(false);
+    navigate(role === "employer" ? "/employer" : "/jobseeker");
   };
 
   return (
-    <nav className="navbar navbar-expand-lg custom-navbar">
+    <nav className={`navbar navbar-expand-lg custom-navbar ${isHome ? "cc-navbar-home" : ""}`}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">
-          CareerConnect
-        </Link>
-
-        <div className="d-flex align-items-center">
+        <Link className="navbar-brand" to="/" onClick={() => setMenuOpen(false)}>CareerConnect<span className="cc-brand-period">.</span></Link>
+        <button className="navbar-toggler cc-nav-toggle" type="button" aria-label="Toggle navigation" aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>
+          <span /><span /><span />
+        </button>
+        <div className={`cc-nav-content ${menuOpen ? "cc-nav-open" : ""}`}>
           {token ? (
-            <>
-              {/* HOME ICON BUTTON */}
-              <button
-                onClick={handleHome}
-                className="btn btn-light btn-sm me-3 home-btn"
-                title="Dashboard"
-              >
-                🏠
-              </button>
-
-              <button
-                onClick={handleProfile}
-                className="btn btn-light btn-sm me-3"
-              >
-                Profile
-              </button>
-
-              <button
-                onClick={handleLogout}
-                className="btn btn-danger btn-sm"
-              >
-                Logout
-              </button>
-            </>
+            <div className="cc-nav-actions">
+              <button onClick={handleHome} className="cc-nav-link">Dashboard</button>
+              <button onClick={handleProfile} className="cc-nav-link">My profile</button>
+              <button onClick={handleLogout} className="cc-nav-login">Logout</button>
+            </div>
           ) : (
-            <>
-              <Link to="/login" className="btn btn-light btn-sm me-3">
-                Login
-              </Link>
-              <Link to="/register" className="btn btn-outline-light btn-sm">
-                Register
-              </Link>
-            </>
+            <div className="cc-nav-actions">
+              <Link to="/login" className="cc-nav-link" onClick={() => setMenuOpen(false)}>Log in</Link>
+              <Link to="/register" className="cc-nav-register" onClick={() => setMenuOpen(false)}>Create account <span>↗</span></Link>
+            </div>
           )}
         </div>
       </div>
