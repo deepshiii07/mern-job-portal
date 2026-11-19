@@ -18,25 +18,15 @@ function App() {
   return (
     <Router>
       <Navbar />
-
-      <div className="container mt-4">
-        <Routes>
-          {/* Landing Page */}
-          <Route path="/" element={<Home />} />
-
-          {/* Auth Pages */}
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          {/* Dashboards */}
-          <Route path="/employer" element={<EmployerDashboard />} />
-          <Route path="/jobseeker" element={<JobSeekerDashboard />} />
-
-          {/* Profile Pages */}
-          <Route path="/employer-profile" element={<EmployerProfile />} />
-          <Route path="/seeker-profile" element={<SeekerProfile />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/employer" element={<EmployerDashboard />} />
+        <Route path="/jobseeker" element={<JobSeekerDashboard />} />
+        <Route path="/employer-profile" element={<EmployerProfile />} />
+        <Route path="/seeker-profile" element={<SeekerProfile />} />
+      </Routes>
     </Router>
   );
 }
