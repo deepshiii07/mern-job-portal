@@ -7,7 +7,6 @@ const authRoutes = require("./routes/authRoutes");
 const profileRoutes = require("./routes/profileRoutes");
 const applicationRoutes = require("./routes/applicationRoutes");
 
-
 dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 require("dotenv").config();
@@ -29,7 +28,8 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/profile", profileRoutes);
 app.use("/api/applications", applicationRoutes);
 
-// Start server
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+// Start server on the port assigned by the hosting provider
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
