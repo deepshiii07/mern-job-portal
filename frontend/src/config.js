@@ -1,3 +1,3 @@
-const API_BASE_URL = "https://mern-job-portal-mzef.onrender.com";
+const API_BASE_URL = "https://careerconnect-x6fm.onrender.com";
 
 export default API_BASE_URL;
