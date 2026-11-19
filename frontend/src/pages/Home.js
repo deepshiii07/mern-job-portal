@@ -1,22 +1,31 @@
 import React from "react";
 import "../App.css";
-import API_BASE_URL from "../config";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
-  return (
-    <div className="hero-section">
-      <div className="overlay">
-        <h1 className="hero-title">
-          Search, Apply and Create jobs for millions of people to see and connect!
-        </h1>
+  const navigate = useNavigate();
 
+  return (
+    <main className="hero-section">
+      <section className="overlay">
+        <h1 className="hero-title">
+          Find the right opportunity. <span>Build what’s next.</span>
+        </h1>
+        <p className="hero-subtitle">
+          A simpler space for job seekers to discover opportunities and for employers
+          to connect with people ready to make an impact.
+        </p>
         <div className="hero-buttons">
-          <button className="hero-btn">Search Jobs</button>
-          <button className="hero-btn">Create Jobs</button>
-          <button className="hero-btn">Connect</button>
+          <button className="hero-btn" onClick={() => navigate("/login")}>Explore jobs</button>
+          <button className="hero-btn" onClick={() => navigate("/register")}>Create an account</button>
         </div>
-      </div>
-    </div>
+        <div className="hero-proof">
+          <span>Discover opportunities</span>
+          <span>Track applications</span>
+          <span>Connect with employers</span>
+        </div>
+      </section>
+    </main>
   );
 }
 
